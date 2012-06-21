@@ -16,4 +16,7 @@ install:
 	install -m 755 javagen.* "${DESTDIR}/usr/bin"
 
 uninstall:
-	unlink ${DESTDIR}/usr/bin/javagen.*
+	unlink ${DESTDIR}/usr/bin/javagen.exception
+	unlink ${DESTDIR}/usr/bin/javagen.exception.jar
+	unlink ${DESTDIR}/usr/bin/javagen.property
+	unlink ${DESTDIR}/usr/bin/javagen.property.jar
