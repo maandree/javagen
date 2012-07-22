@@ -1,5 +1,6 @@
 all: exceptiongenerator propertygenerator
 
+
 exceptiongenerator:
 	mkdir META-INF
 	javac -cp . -s src -d . src/se/kth/maandree/javagen/*.java
@@ -10,6 +11,7 @@ exceptiongenerator:
 
 	rm -r META-INF se
 	rm *~ 2>/dev/null || echo -n
+
 
 propertygenerator:
 	mkdir META-INF
@@ -22,12 +24,15 @@ propertygenerator:
 	rm -r META-INF se
 	rm *~ 2>/dev/null || echo -n
 
-install: all
+
+install:
 	install -d "${DESTDIR}/usr/bin"
 	install -m 755 javagen.* "${DESTDIR}/usr/bin"
+
 
 uninstall:
 	unlink ${DESTDIR}/usr/bin/javagen.exception
 	unlink ${DESTDIR}/usr/bin/javagen.exception.jar
 	unlink ${DESTDIR}/usr/bin/javagen.property
 	unlink ${DESTDIR}/usr/bin/javagen.property.jar
+
