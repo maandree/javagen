@@ -27,18 +27,21 @@ propertygenerator:
 
 install:
 	install -d "${DESTDIR}/usr/bin"
-	install -m 755 javagen.* "${DESTDIR}/usr/bin"
+	install -m 755 "javagen."* "${DESTDIR}/usr/bin"
+	install -d "${DESTDIR}/usr/doc/javagen"
+	install -m 755 "doc/ExceptionGenerator" "${DESTDIR}/usr/doc/javagen"
 
 
 uninstall:
-	unlink ${DESTDIR}/usr/bin/javagen.exception
-	unlink ${DESTDIR}/usr/bin/javagen.exception.jar
-	unlink ${DESTDIR}/usr/bin/javagen.property
-	unlink ${DESTDIR}/usr/bin/javagen.property.jar
+	unlink "${DESTDIR}/usr/bin/javagen.exception"
+	unlink "${DESTDIR}/usr/bin/javagen.exception.jar"
+	unlink "${DESTDIR}/usr/bin/javagen.property"
+	unlink "${DESTDIR}/usr/bin/javagen.property.jar"
+	rm -r "${DESTDIR}/usr/doc/javagen"
 
 
 clean:
-	unlink javagen.exception
-	unlink javagen.exception.jar
-	unlink javagen.property
-	unlink javagen.property.jar
+	unlink "javagen.exception"
+	unlink "javagen.exception.jar"
+	unlink "javagen.property"
+	unlink "javagen.property.jar"

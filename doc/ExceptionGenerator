@@ -1,0 +1,51 @@
+Usege:
+
+javagen.exception -o OUTPUT_PATH [--] SOURCE_FILE...
+
+Source example:
+
+        ## Network exceptions
+        
+        java.net.SocketException
+        >   org.nongnu.paradis.net.NetworkException              String message  .
+            >
+                # Routing exceptions
+                org.nongnu.paradis.net.RoutingException          String message  .
+        	>
+                    # This is no peer alive to anycast to
+                    org.nongnu.paradis.net.NoneAliveException    String message  .
+                    
+                    # Cannot unicast to peer, do not know ho the reach
+                    org.nongnu.paradis.net.UnknownPathException  String message  .
+                    
+                    # The unicasted peer is dead
+                    org.nongnu.paradis.net.PeerIsDeadException   String message  .
+        <   <   <
+
+Lines beginning with #, optionally with leading whitespace, are comments.
+Top level exceptions in the source files are generated, only inherited.
+Everything that is not in java.lang must be fully qualified; generated exaption
+but be fully qualified either way.
+< declares everything until matching > as subclasses.
+
+Syntax for generated exceptions:
+
+        exception        ::=  %class parameters ws "."
+	
+	ws               ::=  {" " | \t}
+	
+	parameters       ::=  parameter [parameters]
+        
+	parameter        ::=  ws (inherited_param | new_param)
+	
+	inherited_param  ::=  %class ws %name
+	
+	new_param        ::=  new_param_1 | new_param_2
+
+        new_param_1      ::=  "!" ws %class ws %name
+
+        new_param_2      ::=  "!!" ws %class ws %param_variable_name ws %param_method_base_name
+
+
+inherited_param:s must be in the same order as when invoking super().
+
