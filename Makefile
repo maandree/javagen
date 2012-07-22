@@ -36,3 +36,9 @@ uninstall:
 	unlink ${DESTDIR}/usr/bin/javagen.property
 	unlink ${DESTDIR}/usr/bin/javagen.property.jar
 
+
+clean:
+	unlink javagen.exception
+	unlink javagen.exception.jar
+	unlink javagen.property
+	unlink javagen.property.jar
