@@ -219,7 +219,7 @@ public class PropertyGenerator
 	buf.append("}\n\n");
 	
 	
-	System.err.println("Writting class " + klass + " to " + file);
+	System.err.println("Writing class " + klass + " to " + file);
 	final OutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(file)));
 	
 	stream.write(buf.toString().getBytes("UTF-8"));
