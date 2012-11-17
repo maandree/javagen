@@ -1,0 +1,14 @@
+/_/
+
+/bin/
+*.class
+*.jar
+javagen.*
+
+*.gz
+
+*~
+\#*\#
+.\#
+*.swp
+*.bak
