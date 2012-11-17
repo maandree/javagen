@@ -11,7 +11,7 @@ makedepends=('java-environment>=6')
 provides=('javagen')
 conflicts=('javagen')
 source=(https://github.com/maandree/javagen/tarball/v1.1)
-md5sums=()
+md5sums=(494b56c7f383c52f9faa8e324edb41a9)
 
 build() {
   cd maandree-javagen-*
