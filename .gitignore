@@ -12,3 +12,6 @@ javagen.*
 .\#
 *.swp
 *.bak
+
+/dist
+!PKGBUILD
