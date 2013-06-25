@@ -1,6 +1,7 @@
 PREFIX=/usr
 BIN=/bin
 DATA=/share
+LICENSES=$(DATA)/licenses
 PKGNAME=javagen
 
 
@@ -35,7 +36,9 @@ install:
 	install -d "$(DESTDIR)$(PREFIX)$(BIN)"
 	install -m 755 "javagen."* "$(DESTDIR)$(PREFIX)$(BIN)"
 	install -d "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
-	install -m 755 "doc/ExceptionGenerator" "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
+	install -m 644 "doc/ExceptionGenerator" "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
+	install -d "$(DESTDIR)$(PREFIX)$(LICENSES)/$(PKGNAME)"
+	install -m 644 LICENSE COPYING "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
 
 
 uninstall:
