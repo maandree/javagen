@@ -1,3 +1,9 @@
+PREFIX=/usr
+BIN=/bin
+DATA=/share
+PKGNAME=javagen
+
+
 all: exceptiongenerator propertygenerator
 
 
@@ -7,10 +13,10 @@ exceptiongenerator:
 
 	echo -e 'Manifest-Version: 1.0\nCreated-By: Mattias Andrée\nMain-Class: se.kth.maandree.javagen.ExceptionGenerator' > META-INF/MANIFEST.MF
 	jar -cfm javagen.exception.jar META-INF/MANIFEST.MF se/kth/maandree/javagen/ExceptionGenerator.class
-	echo "java -jar "$$\0".jar" > javagen.exception
+	echo 'java -jar "$$0".jar' > javagen.exception
 
 	rm -r META-INF se
-	rm *~ 2>/dev/null || echo -n
+	-rm *~ 2>/dev/null
 
 
 propertygenerator:
@@ -19,29 +25,23 @@ propertygenerator:
 
 	echo -e 'Manifest-Version: 1.0\nCreated-By: Mattias Andrée\nMain-Class: se.kth.maandree.javagen.PropertyGenerator' > META-INF/MANIFEST.MF
 	jar -cfm javagen.property.jar META-INF/MANIFEST.MF se/kth/maandree/javagen/PropertyGenerator.class
-	echo "java -jar "$$\0".jar" > javagen.property
+	echo 'java -jar "$$0".jar' > javagen.property
 
 	rm -r META-INF se
-	rm *~ 2>/dev/null || echo -n
+	-rm *~ 2>/dev/null
 
 
 install:
-	install -d "${DESTDIR}/usr/bin"
-	install -m 755 "javagen."* "${DESTDIR}/usr/bin"
-	install -d "${DESTDIR}/usr/doc/javagen"
-	install -m 755 "doc/ExceptionGenerator" "${DESTDIR}/usr/doc/javagen"
+	install -d "$(DESTDIR)$(PREFIX)$(BIN)"
+	install -m 755 "javagen."* "$(DESTDIR)$(PREFIX)$(BIN)"
+	install -d "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
+	install -m 755 "doc/ExceptionGenerator" "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
 
 
 uninstall:
-	unlink "${DESTDIR}/usr/bin/javagen.exception"
-	unlink "${DESTDIR}/usr/bin/javagen.exception.jar"
-	unlink "${DESTDIR}/usr/bin/javagen.property"
-	unlink "${DESTDIR}/usr/bin/javagen.property.jar"
-	rm -r "${DESTDIR}/usr/doc/javagen"
+	-rm -- "$(DESTDIR)$(PREFIX)$(BIN)/javagen."{exception,property}{,.jar}
+	-rm -r "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
 
 
 clean:
-	unlink "javagen.exception"
-	unlink "javagen.exception.jar"
-	unlink "javagen.property"
-	unlink "javagen.property.jar"
+	-rm javagen.{property,exception}{,.jar} 2>/dev/null
