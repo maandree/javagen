@@ -1,6 +1,7 @@
-/_/
+_/
+obj/
+bin/
 
-/bin/
 *.class
 *.jar
 javagen.*
@@ -15,3 +16,4 @@ javagen.*
 
 /dist
 !PKGBUILD
+

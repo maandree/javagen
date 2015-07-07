@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=javagen
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Collection of small code generators for Java"
 arch=('any')
@@ -11,15 +11,15 @@ depends=('java-runtime>=6')
 makedepends=('java-environment>=6')
 provides=('javagen')
 conflicts=('javagen')
-source=(https://github.com/maandree/javagen/tarball/v1.1)
-md5sums=(494b56c7f383c52f9faa8e324edb41a9)
+source=("https://github.com/maandree/javagen/archive/${pkgver}.tar.gz")
+sha256sums=(9169c32d7ec2b2f518cecdd5e5ca310aa7ea529fb40a4787c025f564c98be519)
 
 build() {
-  cd maandree-javagen-*
+  cd javagen-${pkgver}
   make -B
 }
 
 package() {
-  cd maandree-javagen-*
+  cd javagen-${pkgver}
   make DESTDIR="$pkgdir/" install
 }
