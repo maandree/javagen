@@ -37,13 +37,13 @@ bin/javagen.property: obj/PropertyGenerator.jar
 
 
 install:
-	install -d "$(DESTDIR)$(PREFIX)$(BIN)"
-	install -m 755 "javagen.exception" "$(DESTDIR)$(PREFIX)$(BIN)"
-	install -m 755 "javagen.property" "$(DESTDIR)$(PREFIX)$(BIN)"
-	install -d "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
-	install -m 644 "doc/ExceptionGenerator" "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
-	install -d "$(DESTDIR)$(PREFIX)$(LICENSES)/$(PKGNAME)"
-	install -m 644 LICENSE COPYING "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
+	install -d -- "$(DESTDIR)$(PREFIX)$(BIN)"
+	install -m755 -- bin/javagen.exception "$(DESTDIR)$(PREFIX)$(BIN)"
+	install -m755 -- bin/javagen.property "$(DESTDIR)$(PREFIX)$(BIN)"
+	install -d -- "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
+	install -m644 -- doc/ExceptionGenerator "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
+	install -d -- "$(DESTDIR)$(PREFIX)$(LICENSES)/$(PKGNAME)"
+	install -m644 -- LICENSE COPYING "$(DESTDIR)$(PREFIX)$(DATA)/doc/$(PKGNAME)"
 
 
 uninstall:
