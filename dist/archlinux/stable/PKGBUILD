@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=javagen
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Collection of small code generators for Java"
 arch=('any')
@@ -12,11 +12,11 @@ makedepends=('java-environment>=6')
 provides=('javagen')
 conflicts=('javagen')
 source=("https://github.com/maandree/javagen/archive/${pkgver}.tar.gz")
-sha256sums=(9169c32d7ec2b2f518cecdd5e5ca310aa7ea529fb40a4787c025f564c98be519)
+sha256sums=(fcde1c21b26c47a227d420b063df54530e6c78f6dc7ebc65e391b641e6e2414f)
 
 build() {
   cd javagen-${pkgver}
-  make -B
+  make
 }
 
 package() {
